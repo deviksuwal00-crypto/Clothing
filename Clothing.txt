@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hunting Cloths | Premium Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #000; color: white; font-family: 'Inter', sans-serif; }
+        .hero-font { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
+        
+        /* Mobile First Snapping */
+        .feed-container {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scrollbar-width: none;
+        }
+        .feed-container::-webkit-scrollbar { display: none; }
+
+        .product-card {
+            height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top Half: Pure Image */
+        .photo-section {
+            height: 55%;
+            width: 100%;
+            background: #111;
+        }
+        .photo-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Bottom Half: Pure Black Info Area */
+        .info-section {
+            height: 45%;
+            width: 100%;
+            background: #000;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-top: 4px solid #fff; /* Sharp divider line */
+        }
+
+        /* Size Selector grid */
+        .size-btn { 
+            border: 1px solid rgba(255,255,255,0.2); 
+            border-radius: 4px; 
+            padding: 10px; 
+            font-weight: bold; 
+            text-align: center; 
+            font-size: 12px; 
+            cursor: pointer; 
+            transition: 0.3s; 
+        }
+        .size-btn:hover { background-color: white; color: black; }
+        .size-out { 
+            text-decoration: line-through; 
+            color: rgba(255,255,255,0.2); 
+            border-color: rgba(255,255,255,0.1);
+            cursor: not-allowed; 
+            position: relative; 
+        }
+        .size-out::after { 
+            content: '❌'; 
+            font-size: 10px; 
+            color: #ef4444; 
+            position: absolute; 
+            top: -8px; 
+            right: -6px; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="fixed top-6 left-6 z-40 bg-black/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
+        <h1 class="hero-font text-xs tracking-[0.3em] text-green-500">Hunting Cloths</h1>
+    </div>
+
+    <div class="feed-container">
+        
+        <section class="product-card">
+            <div class="photo-section">
+                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=800" alt="Apex Jungle Jacket">
+            </div>
+            
+            <div class="info-section">
+                <div>
+                    <p class="text-green-500 font-bold tracking-widest text-[10px] mb-1">NEW DROP // 01</p>
+                    <h2 class="hero-font text-4xl mb-2 leading-none">Apex<br>Jungle</h2>
+                    <p class="text-gray-400 text-xs mb-4 max-w-sm">Double-layered insulation. Waterproof tactical finish. Designed for the deep forest.</p>
+                    
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="flex flex-col">
+                            <span class="text-[10px] uppercase opacity-40 mb-1">Price</span>
+                            <span class="text-2xl font-black">NPR 4,500</span> </div>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="text-[10px] uppercase font-bold text-white/40 block mb-2">Select Size / Status</p>
+                    <div class="grid grid-cols-5 gap-2">
+                        <div class="size-btn size-out">S</div>
+                        <div class="size-btn" onclick="addToList('Apex Jungle (M)', 4500)">M</div>
+                        <div class="size-btn" onclick="addToList('Apex Jungle (L)', 4500)">L</div>
+                        <div class="size-btn" onclick="addToList('Apex Jungle (XL)', 4500)">XL</div>
+                        <div class="size-btn size-out">XXL</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="product-card">
+            <div class="photo-section">
+                <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=800" alt="Stealth Cargo Pants">
+            </div>
+            
+            <div class="info-section">
+                <div>
+                    <p class="text-green-500 font-bold tracking-widest text-[10px] mb-1">GEAR // 02</p>
+                    <h2 class="hero-font text-4xl mb-2 leading-none">Stealth<br>Cargo</h2>
+                    <p class="text-gray-400 text-xs mb-4 max-w-sm">6-pocket tactical design. Ripstop fabric built for rough mountain terrain.</p>
+                    
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="flex flex-col">
+                            <span class="text-[10px] uppercase opacity-40 mb-1">Price</span>
+                            <span class="text-2xl font-black">NPR 2,800</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="text-[10px] uppercase font-bold text-white/40 block mb-2">Select Size / Status</p>
+                    <div class="grid grid-cols-5 gap-2">
+                        <div class="size-btn" onclick="addToList('Stealth Cargo (28)', 2800)">28</div>
+                        <div class="size-btn" onclick="addToList('Stealth Cargo (30)', 2800)">30</div>
+                        <div class="size-btn size-out">32</div>
+                        <div class="size-btn" onclick="addToList('Stealth Cargo (34)', 2800)">34</div>
+                        <div class="size-btn size-out">36</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <button onclick="toggleCart()" class="fixed top-6 right-6 bg-white text-black px-4 py-2 rounded-full font-black text-[10px] uppercase z-50 shadow-lg">
+        List (<span id="count">0</span>)
+    </button>
+
+    <div id="cart" class="fixed inset-0 bg-black/95 z-50 p-6 flex flex-col translate-x-full transition-transform duration-300">
+        <div class="flex justify-between items-center mb-10 mt-4">
+            <h3 class="hero-font text-xl tracking-widest">Your Gear</h3>
+            <button onclick="toggleCart()" class="text-xs border border-white/20 px-4 py-2 rounded-full uppercase">Close</button>
+        </div>
+
+        <div id="cart-items" class="flex-1 overflow-y-auto space-y-4 text-sm mb-6">
+            <p class="text-white/30 italic">No gear selected yet.</p>
+        </div>
+
+        <div class="border-t border-white/20 pt-6 mb-6">
+            <label class="text-[10px] uppercase font-bold text-white/40 block mb-2">Shipping Destination</label>
+            <select id="shipping" class="w-full bg-[#111] border border-white/10 p-4 rounded-lg text-sm outline-none mb-6" onchange="updateTotal()">
+                <option value="150">Kathmandu Valley (+NPR 150)</option>
+                <option value="250">Outside Kathmandu (+NPR 250)</option>
+                <option value="0">Self-Pickup (Free)</option>
+            </select>
+
+            <div class="flex justify-between font-black text-xl mb-6">
+                <span>TOTAL</span>
+                <span id="total-price" class="text-green-500">NPR 0</span>
+            </div>
+            
+            <button onclick="checkout()" class="w-full bg-green-500 py-4 rounded-xl text-black font-black uppercase tracking-widest text-sm">Send Order via WhatsApp</button>
+        </div>
+    </div>
+
+    <script>
+        let gearList = [];
+        
+        // Hide/Show Cart
+        function toggleCart() { 
+            document.getElementById('cart').classList.toggle('translate-x-full'); 
+        }
+
+        // Add to List
+        function addToList(name, price) {
+            gearList.push({ name, price });
+            updateUI();
+            
+            // Show a quick alert so they know it worked
+            alert(name + " added to your list!");
+        }
+
+        // Update Cart Interface
+        function updateUI() {
+            const listItems = document.getElementById('cart-items');
+            const totalDisplay = document.getElementById('total-price');
+            const count = document.getElementById('count');
+            const shipping = parseInt(document.getElementById('shipping').value);
+
+            if(gearList.length === 0) {
+                listItems.innerHTML = '<p class="text-white/30 italic">No gear selected yet.</p>';
+            } else {
+                listItems.innerHTML = gearList.map((item, index) => `
+                    <div class="flex justify-between items-center bg-[#111] p-4 rounded-lg">
+                        <span>${item.name}</span>
+                        <div class="flex items-center gap-4">
+                            <span class="text-green-500 font-bold">Rs. ${item.price}</span>
+                            <button onclick="removeItem(${index})" class="text-red-500 text-xs font-bold">X</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            const subtotal = gearList.reduce((a, b) => a + b.price, 0);
+            totalDisplay.innerText = `NPR ${subtotal + shipping}`;
+            count.innerText = gearList.length;
+        }
+
+        // Remove item from list
+        function removeItem(index) {
+            gearList.splice(index, 1);
+            updateUI();
+        }
+
+        function updateTotal() { updateUI(); }
+
+        // WhatsApp Checkout
+        function checkout() {
+            if(gearList.length === 0) return alert("Your list is empty!");
+            
+            let message = `*Hello Hunting Cloths!* I want to order:%0A%0A`;
+            gearList.forEach(item => message += `- ${item.name} (Rs. ${item.price})%0A`);
+            
+            const shippingType = document.getElementById('shipping').options[document.getElementById('shipping').selectedIndex].text;
+            message += `%0A*Shipping:* ${shippingType}`;
+            message += `%0A*Total:* ${document.getElementById('total-price').innerText}`;
+            
+            // Put your actual phone number here
+            window.location.href = `https://wa.me/977XXXXXXXXXX?text=${message}`;
+        }
+    </script>
+</body>
+</html>
